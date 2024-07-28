@@ -1,0 +1,97 @@
+package Loop_statements;
+
+import java.util.*;
+
+public class Menthods_and_functions {
+	
+	//method
+	public static void printjava() {
+		System.out.println("Hello coders!! This is java..");
+	}
+	
+	//functions
+	public static void printname(String name) {
+		System.out.println("Hello "+name);
+		System.out.println("Welcome to java calculator..");
+	}
+	
+	public static void addition(int a,int b) {
+		int i = a+b;
+		System.out.println("Sum of those two numbers is: "+ i);
+	}
+	
+	public static void substraction(int a,int b) {
+		int i = a-b;
+		System.out.println("Difference between those two numbers is: "+ i);
+	}
+	
+	public static void multiply(int a,int b) {
+		int i = a*b;
+		System.out.println("Product of those two numbers is : "+ i);
+	}
+	
+	public static void divide(int a,int b) {
+		int i = a/b;
+		System.out.println("Ratio of those two numbers is : "+ i);
+	}
+	
+	public static void calculator() {
+		System.out.println("Enter the value 1:");
+		Scanner inp = new Scanner(System.in);
+        int n = inp.nextInt();
+        System.out.println("Enter the value 2:");
+		Scanner inpu = new Scanner(System.in);
+        int m = inpu.nextInt();
+        System.out.println("1.Addition\r\n"+"2.Substraction\r\n"+"3.Multiplication\r\n"+"4.Division\r\n");
+        System.out.println("Enter the Your Choice[1/2/3/4]:");
+		Scanner input = new Scanner(System.in);
+		int choice = input.nextInt();
+	    switch(choice){
+	      case 1 : 
+	    	 addition(n,m);
+	    	 System.out.println("Thank you!!");
+	    	 break;
+	      case 2 :
+	    	  substraction(n,m);
+	    	  System.out.println("Thank you!!");
+		      break;
+	      case 3 :
+	    	  multiply(n,m);
+	    	  System.out.println("Thank you!!");
+		      break;
+	      case 4:
+	    	  divide(n,m);
+	    	  System.out.println("Thank you!!");
+		      break;
+	    	  
+		}
+	}
+	
+	
+	//main
+	public static void main(String[] args) {
+		
+		printjava();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please Enter your Name:");
+		String name = sc.next();
+		printname(name);
+		System.out.println("Wanna do calculations??\r\n"+"Press 1 if yes\r\n"+"Press 2 if no\r\n"+"Enter your choice:");
+		Scanner ip = new Scanner(System.in);
+		int i  = ip.nextInt();
+		while (true) {
+			if (i ==1) {
+				calculator();
+				break;
+			}else if(i==2){
+				System.out.println("Thank you!! Have a great day...");
+				break;
+			}else {
+				System.out.println("Wrong choice..");
+				break;
+			}
+		}
+	}
+
+
+}
