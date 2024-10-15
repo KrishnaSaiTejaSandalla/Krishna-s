@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_SONGS 1000
+#define MAX_TITLE 100
+#define MAX_ARTIST 100
+#define MAX_ALBUM 100
+#define MAX_GENRE 50
+
+typedef struct {
+    char title[MAX_TITLE];
+    char artist[MAX_ARTIST];
+    char album[MAX_ALBUM];
+    char genre[MAX_GENRE];
+    int release_year;
+} Song;
+
+Song song_collection[MAX_SONGS];
+int song_count = 0;
+
+void add_song(const char* title, const char* artist, const char* album, const char* genre, int release_year) {
+    if (song_count < MAX_SONGS) {
+        strcpy(song_collection[song_count].title, title);
+        strcpy(song_collection[song_count].artist, artist);
+        strcpy(song_collection[song_count].album, album);
+        strcpy(song_collection[song_count].genre, genre);
+        song_collection[song_count].release_year = release_year;
+        song_count++;
+    } else {
+        printf("Song collection is full!\n");
+    }
+}
+
+void search_by_title(const char* title) {
+    printf("-----------------------------------------------------------------\n");
+    printf("Search results for title '%s':\n", title);
+    for (int i = 0; i < song_count; i++) {
+        if (strstr(song_collection[i].title, title) != NULL) {
+            printf(" Title: %s\n Artist: %s\n Album: %s\n Genre: %s\n Year: %d\n",
+                   song_collection[i].title,
+                   song_collection[i].artist,
+                   song_collection[i].album,
+                   song_collection[i].genre,
+                   song_collection[i].release_year);
+        }
+    }
+}
+
+void search_by_artist(const char* artist) {
+    printf("-----------------------------------------------------------------\n");
+    printf("Search results for artist '%s':\n", artist);
+    for (int i = 0; i < song_count; i++) {
+        if (strstr(song_collection[i].artist, artist) != NULL) {
+            printf(" Title: %s \n Artist: %s\n Album: %s\n Genre: %s\n Year: %d\n",
+                   song_collection[i].title,
+                   song_collection[i].artist,
+                   song_collection[i].album,
+                   song_collection[i].genre,
+                   song_collection[i].release_year);
+        }
+    }
+}
+
+void search_by_genre(const char* genre) {
+    printf("-----------------------------------------------------------------\n");
+    printf("Search results for genre '%s':\n", genre);
+    for (int i = 0; i < song_count; i++) {
+        if (strstr(song_collection[i].genre, genre) != NULL) {
+            printf(" Title: %s\n Artist: %s\n Album: %s\n Genre: %s\n Year: %d\n",
+                   song_collection[i].title,
+                   song_collection[i].artist,
+                   song_collection[i].album,
+                   song_collection[i].genre,
+                   song_collection[i].release_year);
+        }
+    }
+    printf("-----------------------------------------------------------------\n");
+}
+
+int main() {
+
+    add_song("Chutamalle", "Anirudh", "Devara", "Melody", 2024);
+    printf("-----------------------------------------------------------------\n");
+    printf("                          Music Player\n");
+    add_song("Faded", "Alan Walker", "Private Album", "Pop", 2021);
+    add_song("Lungi Dance", "Honey Singh", "Chennai", "Party", 2019);
+
+    search_by_title("Chutamalle");
+    search_by_artist("Honey Singh");
+    search_by_genre("Pop");
+
+    return 0;
+}
+
+
