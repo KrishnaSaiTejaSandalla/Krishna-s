@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+struct Course {
+    char name[100];
+    int creditHours;
+};
+struct Student {
+    char name[100];
+    int id;
+    int semester;
+    int numberOfCourses;
+    struct Course courses[10];
+};
+int main() {
+    struct Student student;
+    printf(" Enter student name: \n");
+    fgets(student.name, 100, stdin);
+    student.name[strcspn(student.name, "\n")] = '\0';  
+    printf(" Enter student ID: \n");
+    scanf("%d", &student.id);
+    printf(" Enter student semester:\n ");
+    scanf("%d", &student.semester);
+    printf("Enter number of enrolled courses:\n");
+    scanf("%d", &student.numberOfCourses);
+    for (int i = 0; i < student.numberOfCourses; i++) {
+        printf("\n Enter course %d name:\n ", i + 1);
+        getchar(); 
+        fgets(student.courses[i].name, 50, stdin);
+        student.courses[i].name[strcspn(student.courses[i].name, "\n")] = '\0';
+
+        printf("Enter course %d credit hours:\n", i + 1);
+        scanf("%d", &student.courses[i].creditHours);
+    }
+    printf("\n--------------------- Student Information ----------------------\n");
+    printf("Name: %s\n", student.name);
+    printf("ID: %d\n", student.id);
+    printf("Semester: %d\n", student.semester);
+    printf("Enrolled Courses:\n");
+    for (int i = 0; i < student.numberOfCourses; i++) {
+        printf("Course %d: %s (%d credit hours)\n", i + 1, student.courses[i].name, student.courses[i].creditHours);
+    }
+    return 0;
+}
