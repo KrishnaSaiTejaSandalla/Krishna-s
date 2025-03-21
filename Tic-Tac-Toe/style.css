@@ -51,6 +51,9 @@ h1{
     border-radius: 1rem;
     border: none;
 }
+#reset-btn:hover{
+    filter: drop-shadow(1px 1px 20px white);
+}
 
 #new-btn{
     padding: 1rem;
@@ -59,6 +62,9 @@ h1{
     color: #fff;
     border-radius: 1rem;
     border: none;
+}
+#new-btn:hover{
+    filter: drop-shadow(1px 1px 20px white);
 }
 
 #msg{
